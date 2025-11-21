@@ -1222,6 +1222,7 @@
 						"     )) ~> sink1",
 						"aggregate1 sink(allowSchemaDrift: true,",
 						"     validateSchema: false,",
+						"     partitionFileNames:['NycPayrollSummary'],",
 						"     truncate: true,",
 						"     umask: 0022,",
 						"     preCommands: [],",
@@ -1232,7 +1233,8 @@
 						"          AgencyName,",
 						"          FiscalYear,",
 						"          TotalPaid",
-						"     )) ~> sink2"
+						"     ),",
+						"     partitionBy('hash', 1)) ~> sink2"
 					]
 				}
 			},
